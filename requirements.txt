@@ -1,0 +1,12 @@
+boto3~=1.13.11
+jmespath~=0.10.0
+docutils~=0.15.2
+botocore~=1.16.11
+s3transfer~=0.3.3
+cryptography~=2.9.2
+python-dateutil~=2.8.1
+urllib3~=1.25.9
+certifi~=2020.4.5.1
+six~=1.14.0
+Faker~=4.1.1
+requests~=2.23.0
