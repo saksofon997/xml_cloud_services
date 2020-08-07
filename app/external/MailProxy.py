@@ -1,30 +1,32 @@
 import atexit
 import smtplib
+import os
 
 
 class MailProxy:
 
     def __init__(self):
-        self.fromaddr = "xmlwsrentals@gmail.com"
+        self.username = os.environ["MAIL_LOGIN"]
+        self.password = os.environ["MAIL_PASSWORD"]
 
         self._server = smtplib.SMTP('smtp.gmail.com:587')
         self._server.ehlo()
         self._server.starttls()
-        self._server.login("xmlwsrentals@gmail.com", "amyfozulqzphrdak")
+        self._server.login(self.username, self.password)
         atexit.register(self.quit)
 
     def _form(self, address, message):
         return "\r\n".join([
-            "From: xmlwsrentals@gmail.com",
+            f"From: {self.username}",
             f"To: {address}",
             "Subject: XMLWS Rentals",
             "",
             f"{message}"
         ])
 
-    def send(self, toaddrs, message):
-        msg = self._form(toaddrs, message)
-        return self._server.sendmail(self.fromaddr, toaddrs, msg)
+    def send(self, address, message):
+        msg = self._form(address, message)
+        return self._server.sendmail(self.username, address, msg)
 
     def quit(self):
         self._server.quit()

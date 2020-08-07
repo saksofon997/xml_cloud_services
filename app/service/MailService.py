@@ -9,6 +9,6 @@ def handle(event, context):
     address = body["address"]
     message = body["message"]
 
-    MailProxy().send(toaddrs=address, message=message)
+    MailProxy().send(address=address, message=message)
 
     return True
