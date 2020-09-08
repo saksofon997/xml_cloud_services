@@ -1,3 +1,5 @@
+import logging
+
 from app.api.Response import Response
 from app.repository.LocationRepo import LocationRepo
 
@@ -5,8 +7,11 @@ repo = LocationRepo()
 
 
 def handle(event, context):
-    id = str(event["queryStringParameters"]["id"])
+    try:
+        id = str(event["queryStringParameters"]["id"])
 
-    coords = repo.find(id)
+        coords = repo.find(id)
 
-    return Response.ok(coords)
+        return Response.ok(coords)
+    except Exception as e:
+        logging.error(f"Locating vehicle failed due to {e}.")

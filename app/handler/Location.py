@@ -1,4 +1,5 @@
 import json
+import logging
 import os
 
 import boto3
@@ -17,6 +18,6 @@ def handle(event, context):
         MessageBody=json.dumps(body)
     )
 
-    print(response['MessageId'])
+    logging.info(f"Message {response['MessageId']} sent to Queue")
 
     return Response.accepted()

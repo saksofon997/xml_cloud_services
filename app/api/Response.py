@@ -23,12 +23,12 @@ class Response(object):
 
     @staticmethod
     def accepted():
-        return Response(HTTPStatus.ACCEPTED, None).json()
+        return Response(HTTPStatus.ACCEPTED).json()
 
     @staticmethod
     def bad_request():
-        return Response(HTTPStatus.BAD_REQUEST, None).json()
+        return Response(HTTPStatus.BAD_REQUEST).json()
 
     @staticmethod
     def no_content():
-        return Response(HTTPStatus.NO_CONTENT, None).json()
+        return Response(HTTPStatus.NO_CONTENT).json()
