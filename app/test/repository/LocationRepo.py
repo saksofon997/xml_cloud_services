@@ -1,7 +1,7 @@
 import pytest
-from moto import mock_dynamodb2
 
 from app.repository.LocationRepo import LocationRepo
+from moto import mock_dynamodb2
 from app.test.utils.DynamoDB import create_table, get_item
 
 
