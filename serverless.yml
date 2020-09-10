@@ -25,6 +25,10 @@ provider:
     MAIL_PASSWORD: ${ssm:/xmlws/${self:custom.stage}/email/password}
     GMAIL_SMTP: ${ssm:/xmlws/${self:custom.stage}/email/smtp}
 
+package:
+  exclude:
+    - node_modules/**
+
 resources:
   Resources:
     EmailQueue:
