@@ -21,7 +21,6 @@ provider:
     STAGE: ${self:custom.stage}
     EMAIL_QUEUE_URL: https://sqs.us-east-1.amazonaws.com/657729777987/EmailQueue
     LOCATION_QUEUE_URL: https://sqs.us-east-1.amazonaws.com/657729777987/LocationQueue
-    DATABASE_NAME: xmlws-dev
     MAIL_LOGIN: ${ssm:/xmlws/${self:custom.stage}/email/login}
     MAIL_PASSWORD: ${ssm:/xmlws/${self:custom.stage}/email/password}
     GMAIL_SMTP: ${ssm:/xmlws/${self:custom.stage}/email/smtp}
