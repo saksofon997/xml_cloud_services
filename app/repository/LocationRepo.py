@@ -6,10 +6,11 @@ from boto3.dynamodb.conditions import Key
 
 class LocationRepo(object):
     VEHICLE_PREFIX = "VEHICLE_"
+    DATABASE_NAME = "xmlws-dev"
 
     def __init__(self):
         self.client = boto3.resource("dynamodb")
-        self.table = self.client.Table(os.environ["DATABASE_NAME"])
+        self.table = self.client.Table(LocationRepo.DATABASE_NAME)
 
     def add(self, id: str, token: str, coordinates: dict) -> bool:
         self.table.put_item(
