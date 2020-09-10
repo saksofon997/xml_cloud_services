@@ -1,0 +1,29 @@
+version: v1.0
+name: XML Cloud Services
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Setup
+    task:
+      prologue:
+        commands:
+          - sem-version node 12.18.1
+          - sem-version python 3.8
+      jobs:
+        - name: Test
+          commands:
+            - checkout
+            - pip install -r requirements.txt
+            - pytest
+
+promotions:
+  - name: Production deploy
+    pipeline_file: prod.yml
+  - name: Staging deploy
+    pipeline_file: dev.yml
+    auto_promote_on:
+      - result: passed
+        branch:
+          - master

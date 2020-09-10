@@ -1,0 +1,21 @@
+version: v1.0
+name: XML Cloud Services Production
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Deploy to production
+    task:
+      prologue:
+        commands:
+          - sem-version node 12.18.1
+          - sem-version python 3.8
+      jobs:
+        - name: Production deploy
+          commands:
+            - checkout
+            - pip install -r requirements.txt
+            - npm install -g serverless@1.67.3
+            - npm install
+            - sls deploy --stage prod
