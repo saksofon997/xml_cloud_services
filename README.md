@@ -18,6 +18,8 @@ To run the application you need to provide environment variables listed below.
 |----------------|:---------------------:|--------------------------------------|
 | MAIL_LOGIN     | Email login           | /xmlws/[stage]/email/login           |
 | MAIL_PASSWORD  | Email password        | /xmlws/[stage]/email/password        |
+| MAIL_SMTP      | Email SMTP address    | /xmlws/[stage]/email/smtp            |
+| STAGE          | Serverless stage      | /xmlws/[stage]/version               |
 
 
 Required variables should be stored on the AWS System Management Parameter Store for the deployed application.
